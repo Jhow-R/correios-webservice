@@ -1,0 +1,8 @@
+﻿@model NetFramework.Models.Endereco
+
+@if (Model != null)
+{
+    <span>@Html.DisplayFor(m => m.Descricao) @Html.DisplayFor(m => m.Complemento) <br /></span>
+    <span>@Html.DisplayFor(m => m.Bairro) <br /></span>
+    <span>@Html.DisplayFor(m => m.Cidade) - @Html.DisplayFor(m => m.UF)</span>
+}

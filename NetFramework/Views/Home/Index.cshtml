@@ -1,0 +1,39 @@
+﻿@model NetFramework.Models.Cep
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Web Service</h1>
+    <p class="lead">Consultando CEP nos Correios</p>
+</div>
+
+<div>
+    @using (Ajax.BeginForm("Localizar", new AjaxOptions
+    {
+        UpdateTargetId = "endereco",
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "GET"
+    }))
+    {
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    @Html.TextBoxFor(m => m.Codigo, new { @class = "form-control", onkeypress = "numbersOnly(event)", min="9" })
+                    <div class="input-group-append">
+                        <input class="btn btn-outline-info" type="submit" id="btnBuscar" value="Buscar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    }
+    <div id="endereco">
+        @{Html.RenderPartial("_Endereco");}
+    </div>
+</div>
